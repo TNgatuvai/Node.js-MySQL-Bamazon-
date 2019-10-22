@@ -18,3 +18,17 @@ connection.connect(function(err) {
     }
     loadProducts();
   });
+
+// Function to load the products table from the database and print results to the console
+function loadProducts() {
+    // Selects all of the data from the MySQL products table
+    connection.query("SELECT * FROM products", function(err, res) {
+      if (err) throw err;
+  
+      // Draw the table in the terminal using the response
+      console.table(res);
+  
+      // Then prompt the customer for their choice of product, pass all the products to promptCustomerForItem
+      promptCustomerForItem(res);
+    });
+  }  

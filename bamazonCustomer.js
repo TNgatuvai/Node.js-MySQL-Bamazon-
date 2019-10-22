@@ -65,3 +65,17 @@ function promptCustomerForItem(inventory) {
             }
         });
 }
+
+// Prompt the customer for a product quantity
+function promptCustomerForQuantity(product) {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "quantity",
+                message: "How many would you like? [Quit with Q]",
+                validate: function (val) {
+                    return val > 0 || val.toLowerCase() === "q";
+                }
+            }
+        ])
